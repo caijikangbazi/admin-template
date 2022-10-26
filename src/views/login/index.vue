@@ -1,36 +1,93 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
       <!--   username    -->
-      <el-form-item>
+      <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon="user"></svg-icon>
         </span>
-        <el-input placeholder="username" name="username" v-model="username" type="text" />
+        <el-input placeholder="username" name="username" v-model="loginForm.username" type="text" />
       </el-form-item>
       <!--   password    -->
-      <el-form-item>
+      <el-form-item prop="password">
          <span class="svg-container">
           <svg-icon icon="password"></svg-icon>
         </span>
-        <el-input placeholder="password" name="password" type="text" />
-        <span class="show-pwd">
-          <svg-icon icon="eye"></svg-icon>
+        <el-input placeholder="password" name="password" v-model="loginForm.password" :type="passwordType" />
+        <span class="show-pwd" @click="onChangePwdType">
+          <svg-icon :icon="pwdIcon"></svg-icon>
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width: 100%;margin-bottom: 30px;">登录</el-button>
+      <el-button @click="handleLogin" :loading="loading" type="primary" style="width: 100%;margin-bottom: 30px;">登录
+      </el-button>
     </el-form>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { validatePassword } from '@/views/login/rules'
+import { useStore } from 'vuex'
 
-const username = ref(null)
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名为必填项'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
+})
+
+// 处理密码框 文本显示
+const passwordType = ref('password')
+const pwdIcon = ref('eye')
+
+const onChangePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = ''
+    pwdIcon.value = 'eye-open'
+  } else {
+    passwordType.value = 'password'
+    pwdIcon.value = 'eye'
+  }
+}
+
+const loading = ref(false)
+const loginFormRef = ref(null)
+const store = useStore()
+const handleLogin = () => {
+  // 1. 表单校验
+  loginFormRef.value.validate(valid => {
+    if (!valid) return
+    loading.value = true
+    store.dispatch('user/login', loginForm.value).then(() => {
+      loading.value = false
+    }).catch(err => {
+      loading.value = false
+      console.log(err)
+    })
+  })
+  // 2. 触发登录动作
+  // 3. 进行登录后处理
+}
+
 </script>
 
 <style lang="scss" scoped>

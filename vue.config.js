@@ -6,6 +6,16 @@ function resolve (dir) {
 
 // https://cli.vuejs.org/zh/guide/webpack.html#%E7%AE%80%E5%8D%95%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F
 module.exports = {
+  // webpack devServer 提供了代理的功能
+  devServer: {
+    proxy: {
+      // 当地址中包含 /api的时候
+      '/api': {
+        target: 'https://api.imooc-admin.lgdsunday.club/',
+        changeOrigin: true // 是否跨域
+      }
+    }
+  },
   chainWebpack (config) {
     // 设置 svg-sprite-loader
     config.module

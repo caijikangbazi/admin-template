@@ -8,6 +8,7 @@ const privateRoutes = [
   {
     path: '/user',
     component: layout,
+    redirect: '/user/manage',
     meta: {
       title: 'user',
       icon: 'personnel'
@@ -108,7 +109,7 @@ const publicRoutes = [
   },
   {
     path: '/',
-    redirct: '/profile',
+    redirect: '/profile',
     component: () => import('@/layout/index'),
     children: [
       {

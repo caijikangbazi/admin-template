@@ -3,6 +3,9 @@
     <hamburger class="hamburger-container" />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!--   国际化   -->
+      <lang-select class="right-menu-item hover-effect"></lang-select>
+      <!--   头像   -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <el-avatar shape="square" :size="40" :src="$store.getters.userInfo.avatar"></el-avatar>
@@ -11,10 +14,10 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item> 首页</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navbar.home') }}</el-dropdown-item>
             </router-link>
             <el-dropdown-item divided @click="logout">
-              退出登录
+              {{ $t('msg.navbar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -26,7 +29,7 @@
 <script setup>
 import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
-
+import LangSelect from '@/components/LangSelect'
 import { useStore } from 'vuex'
 
 const store = useStore()
@@ -43,24 +46,39 @@ const logout = () => {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
-  .hamburger-container{
+  .hamburger-container {
     line-height: 46px;
     height: 100%;
     float: left;
     cursor: pointer;
     transition: background .5s;
   }
-  .hamburger-container:hover{
-    background: rgba(0,0,0,.2);
+
+  .hamburger-container:hover {
+    background: rgba(0, 0, 0, .2);
   }
-  .breadcrumb-container{
+
+  .breadcrumb-container {
     float: left;
   }
+
   .right-menu {
     display: flex;
     align-items: center;
     float: right;
     padding-right: 16px;
+
+    :deep(.right-menu-item) {
+      display: inline-block;
+      padding: 0 18px 0 0;
+      font-size: 24px;
+      color: #5a5e66;
+      vertical-align: text-bottom;
+
+      &.hover-effect {
+        cursor: pointer;
+      }
+    }
 
     :deep(.avatar-container) {
       cursor: pointer;

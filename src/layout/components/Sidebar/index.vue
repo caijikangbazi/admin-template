@@ -3,7 +3,6 @@
     <div class="logo-container">
       <el-avatar :size="logoHeight" shape="square" :src="require('@/assets/logo.png')"></el-avatar>
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">浙程科技</h1>
-
     </div>
     <el-scrollbar>
       <sidebar-menu></sidebar-menu>

@@ -33,5 +33,11 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+    config.module
+      .rule('element-plus-2')
+      .test(/\.mjs$/)
+      .type('javascript/auto')
+      .include.add(/node_modules/)
+      .end()
   }
 }

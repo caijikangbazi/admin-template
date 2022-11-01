@@ -10,20 +10,21 @@
         <span class="svg-container">
           <svg-icon icon="user"></svg-icon>
         </span>
-        <el-input placeholder="username" name="username" v-model="loginForm.username" type="text" />
+        <el-input :placeholder="$t('msg.login.placeholder')" clearable v-model="loginForm.username" type="text" />
       </el-form-item>
       <!--   password    -->
       <el-form-item prop="password">
          <span class="svg-container">
           <svg-icon icon="password"></svg-icon>
         </span>
-        <el-input placeholder="password" name="password" v-model="loginForm.password" :type="passwordType" />
+        <el-input :placeholder="$t('msg.login.placeholder')" clearable name="password" v-model="loginForm.password" :type="passwordType" />
         <span class="show-pwd" @click="onChangePwdType">
           <svg-icon :icon="pwdIcon"></svg-icon>
         </span>
       </el-form-item>
 
-      <el-button @click="handleLogin" :loading="loading" type="primary" style="width: 100%;margin-bottom: 30px;">{{ $t('msg.login.loginBtn') }}
+      <el-button @click="handleLogin" :loading="loading" type="primary" style="width: 100%;margin-bottom: 30px;">
+        {{ $t('msg.login.loginBtn') }}
       </el-button>
     </el-form>
   </div>
@@ -126,6 +127,15 @@ $cursor: #fff;
       height: 47px;
       width: 85%;
 
+      .el-input__wrapper {
+        background-color: transparent;
+        width: 100%;
+        box-shadow: none !important;
+      }
+      .is-focus{
+        box-shadow: none;
+      }
+
       input {
         background: transparent;
         border: 0px;
@@ -167,7 +177,8 @@ $cursor: #fff;
     cursor: pointer;
     user-select: none;
   }
-  :deep(.lang-select){
+
+  :deep(.lang-select) {
     position: absolute;
     top: 4px;
     right: 0;

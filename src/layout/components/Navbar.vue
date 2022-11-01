@@ -14,10 +14,10 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item>{{ $t('msg.navbar.home') }}</el-dropdown-item>
+              <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
             </router-link>
             <el-dropdown-item divided @click="logout">
-              {{ $t('msg.navbar.logout') }}
+              {{ $t('msg.navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -88,7 +88,7 @@ const logout = () => {
         position: relative;
 
         .el-avatar {
-          --el-avatar-background-color: none;
+          background-color: transparent;
           margin-right: 12px;
         }
       }

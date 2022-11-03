@@ -8,6 +8,7 @@ function resolve (dir) {
 module.exports = {
   // webpack devServer 提供了代理的功能
   devServer: {
+    port: 8888,
     proxy: {
       // 当地址中包含 /api的时候
       '/api': {

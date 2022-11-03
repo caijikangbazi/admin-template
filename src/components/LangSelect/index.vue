@@ -1,10 +1,13 @@
 <template>
   <el-dropdown class="international" trigger="click" @command="handSetLanguage">
     <div>
-      <el-tooltip placement="bottom-start" content="国际化" :effect="effect">
-        <svg-icon icon="language"></svg-icon>
+      <el-tooltip placement="bottom-start" :content="$t('msg.navBar.lang')" :effect="effect">
+        <div>
+          <svg-icon icon="language"></svg-icon>
+        </div>
       </el-tooltip>
     </div>
+
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item :disabled="language === 'zh'" command="zh">中文</el-dropdown-item>

@@ -6,6 +6,7 @@
       <div class="fixed-header">
         <!--  顶部 navbar  -->
         <navbar />
+        <tags-vies></tags-vies>
       </div>
       <app-main />
     </div>
@@ -15,6 +16,7 @@
 
 <script setup>
 import Navbar from './components/Navbar'
+import TagsVies from '@/components/TagsView'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain'
 import variables from '@/styles/variables.module.scss'
@@ -43,5 +45,9 @@ import variables from '@/styles/variables.module.scss'
 
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hideSideBarWidth });;
+}
+
+.main-container{
+  min-width: 650px;
 }
 </style>

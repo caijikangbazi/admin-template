@@ -5,6 +5,7 @@
     :style="styleExternalIcon"
     class="svg-external-icon svg-icon"
     :class="className"
+    @click="hanldeClick"
   ></div>
   <!-- 展示内部图标 -->
   <svg v-else class="svg-icon" :class="className" aria-hidden="true">
@@ -28,7 +29,6 @@ const props = defineProps({
     default: ''
   }
 })
-
 /***
  * 判断当前图标是否为外部图标
  */

@@ -9,3 +9,7 @@ export const LANG = 'language'
 export const MAIN_COLOR = 'mainColor'
 // 默认主题色
 export const DEFAULT_COLOR = '#409eff'
+// 屏幕宽度变化,menu菜单缩放
+export const MENU_SHOW = 700
+// tags
+export const TAGS_VIEW = 'tagsView'

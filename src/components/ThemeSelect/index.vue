@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown class="theme" v-bind="$attrs" trigger="click" @command="handSetTheme">
+  <el-dropdown id="guide-theme" class="theme" v-bind="$attrs" trigger="click" @command="handSetTheme">
     <div>
       <el-tooltip placement="bottom-start" :content="$t('msg.navBar.themeChange')" effect="dark">
         <div>

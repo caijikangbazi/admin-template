@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="guide-sidebar">
     <div class="logo-container">
       <el-avatar :size="logoHeight" shape="square" :src="require('@/assets/logo.png')"></el-avatar>
       <h1 class="logo-title" v-if="$store.getters.sidebarOpened">浙程科技</h1>

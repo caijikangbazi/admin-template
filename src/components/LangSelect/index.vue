@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown class="international" trigger="click" @command="handSetLanguage">
+  <el-dropdown id="guide-lang" class="international" trigger="click" @command="handSetLanguage">
     <div>
       <el-tooltip placement="bottom-start" :content="$t('msg.navBar.lang')" :effect="effect">
         <div>

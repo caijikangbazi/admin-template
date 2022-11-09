@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="breadcrumb" separator="/">
+  <el-breadcrumb id="guide-breadcrumb" class="breadcrumb" separator="/">
     <transition-group name="breadcrumb">
       <!-- 面包屑的最后一项 -->
       <el-breadcrumb-item v-for="(item,index) of breadcrumbData" :key="item.path">
